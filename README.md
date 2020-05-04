@@ -28,7 +28,7 @@ This library allows common members (properties and event callbacks) and function
 1. Add [Nuget](https://www.nuget.org/packages/Mobsites.Blazor.BaseComponents/) package:
 
 ```shell
-dotnet add package Mobsites.Blazor.BaseComponents --version 1.0.2
+dotnet add package Mobsites.Blazor.BaseComponents
 ```
 
 2. Choose a component base to inherit and use it to provide the basis for your next Blazor component.
