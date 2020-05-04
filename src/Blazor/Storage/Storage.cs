@@ -10,6 +10,9 @@ namespace Mobsites.Blazor
     /// </summary>
     public class Storage
     {
+        /// <summary>
+        /// Constructor for passing in <see cref="IJSRuntime" /> to initialize storage access.
+        /// </summary>
         public Storage(IJSRuntime jsRuntime)
         {
             Local = new LocalStorage(jsRuntime);

@@ -22,21 +22,22 @@ namespace Mobsites.Blazor
         /// <summary>
         /// Styles for directly affecting this component go here.
         /// </summary>
-        [Parameter] public override string Style
-        { 
-            get 
+        [Parameter]
+        public override string Style
+        {
+            get
             {
-                string color = string.IsNullOrWhiteSpace(this.Color) 
-                    ? null 
+                string color = string.IsNullOrWhiteSpace(this.Color)
+                    ? null
                     : $"color: {this.Color};";
-                string backgroundColor = string.IsNullOrWhiteSpace(this.BackgroundColor) 
-                    ? null 
+                string backgroundColor = string.IsNullOrWhiteSpace(this.BackgroundColor)
+                    ? null
                     : $"background: {this.BackgroundColor};";
-                string image = string.IsNullOrWhiteSpace(this.BackgroundImage) 
-                    ? backgroundColor 
+                string image = string.IsNullOrWhiteSpace(this.BackgroundImage)
+                    ? backgroundColor
                     : $"background: url('{this.BackgroundImage}') no-repeat center/cover;";
                 string gradient = string.IsNullOrWhiteSpace(this.BackgroundColorStart) || string.IsNullOrWhiteSpace(this.BackgroundColorEnd)
-                    ? backgroundColor 
+                    ? backgroundColor
                     : $"background: linear-gradient({(int)(this.BackgroundColorDirection)}deg, {this.BackgroundColorStart} 0%, {this.BackgroundColorEnd} 70%);";
                 string background = BackgroundMode switch
                 {
@@ -48,7 +49,7 @@ namespace Mobsites.Blazor
 
                 return background + color + style;
             }
-            set => style = value; 
+            set => style = value;
         }
 
         private ContrastModes contrastMode;
@@ -58,7 +59,8 @@ namespace Mobsites.Blazor
         /// Setting this has no effect on this component.
         /// Use BackgroundMode to set a dark or light mode.
         /// </summary>
-        [Parameter] public override ContrastModes ContrastMode
+        [Parameter]
+        public override ContrastModes ContrastMode
         {
             get => this.Parent is null
                 ? this.BackgroundMode switch
@@ -74,27 +76,29 @@ namespace Mobsites.Blazor
         /// <summary>
         /// The background color for this component. Accepts any valid css color usage.
         /// </summary>
-        [Parameter] public override string BackgroundColor
+        [Parameter]
+        public override string BackgroundColor
         {
             get => BackgroundMode == BackgroundModes.None ? null : base.BackgroundColor;
             set => base.BackgroundColor = value;
         }
 
         private string backgroundImage;
-        
+
         /// <summary>
         /// Background image source. Set BackgroundMode to Image for usage.
         /// </summary>
-        [Parameter] public virtual string BackgroundImage 
-        { 
-            get => backgroundImage; 
-            set 
-            { 
+        [Parameter]
+        public virtual string BackgroundImage
+        {
+            get => backgroundImage;
+            set
+            {
                 if (!string.IsNullOrEmpty(value))
                 {
                     backgroundImage = value;
-                } 
-            } 
+                }
+            }
         }
 
         /// <summary>
@@ -137,6 +141,9 @@ namespace Mobsites.Blazor
         *
         ****************************************************/
 
+        /// <summary>
+        /// Set values on options that need to be maintained when keeping state.
+        /// </summary>
         protected void SetOptions(MainComponentOptions options)
         {
             options.BackgroundColorDirection = this.BackgroundColorDirection;
@@ -146,6 +153,10 @@ namespace Mobsites.Blazor
             base.SetOptions(options);
         }
 
+        /// <summary>
+        /// Check whether storage-retrieved options are different than current
+        /// and thereby need to notify parents of change when keeping state.
+        /// </summary>
         protected async Task<bool> CheckState(MainComponentOptions options)
         {
             bool stateChanged = false;
@@ -170,6 +181,6 @@ namespace Mobsites.Blazor
             }
 
             return await base.CheckState(options) || stateChanged;
-        }   
+        }
     }
 }

@@ -28,14 +28,26 @@ namespace Mobsites.Blazor
         ***********************************************************************/
 
         private BackgroundColorDirections? backgroundColorDirection;
-        public BackgroundColorDirections? BackgroundColorDirection 
-        { 
-            get => backgroundColorDirection; 
-            set => backgroundColorDirection = this.NullOnZero<BackgroundColorDirections?>(value); 
+
+        /// <summary>
+        /// Option for the direction of background color flow. Set BackgroundMode to Gradient for usage.
+        /// </summary>
+        public BackgroundColorDirections? BackgroundColorDirection
+        {
+            get => backgroundColorDirection;
+            set => backgroundColorDirection = this.NullOnZero<BackgroundColorDirections?>(value);
         }
 
+        /// <summary>
+        /// Option for the gradient start color for this component. Accepts any valid css color usage.
+        /// Set BackgroundMode to Gradient for usage.
+        /// </summary>
         public string BackgroundColorStart { get; set; }
 
+        /// <summary>
+        /// Option for the gradient end color for this component. Accepts any valid css color usage.
+        /// Set BackgroundMode to Gradient for usage.
+        /// </summary>
         public string BackgroundColorEnd { get; set; }
     }
 }

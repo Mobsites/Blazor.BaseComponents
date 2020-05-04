@@ -44,7 +44,7 @@ namespace Mobsites.Blazor
             if (this.KeepState)
             {
                 string key = GetKey<TComponent>();
-                
+
                 await this.Storage.Session.RemoveAsync<TOptions>(key);
                 await this.Storage.Local.RemoveAsync<TOptions>(key);
             }
@@ -63,22 +63,34 @@ namespace Mobsites.Blazor
         /// </summary>
         protected Storage Storage { get; set; }
 
+        /// <summary>
+        /// Life cycle method for when component is initialized.
+        /// </summary>
         protected override void OnInitialized()
         {
             Storage = new Storage(jsRuntime);
         }
 
+        /// <summary>
+        /// Get key used for specified object in Browser storage.
+        /// </summary>
         protected string GetKey<T>()
             where T : StatefulComponent => string.IsNullOrWhiteSpace(Id) ? typeof(T).Name : $"{typeof(T).Name}.{Id}";
 
+        /// <summary>
+        /// Get state for specified object from Browser storage.
+        /// </summary>
         protected async ValueTask<TOptions> GetState<TComponent, TOptions>()
             where TComponent : StatefulComponent
-            where TOptions : IStatefulComponentOptions => this.KeepState 
+            where TOptions : IStatefulComponentOptions => this.KeepState
                 ? this.UseSessionStorageForState
                     ? await this.Storage.Session.GetAsync<TOptions>(GetKey<TComponent>())
                     : await this.Storage.Local.GetAsync<TOptions>(GetKey<TComponent>())
                 : default;
 
+        /// <summary>
+        /// Save state for specified object in Browser storage.
+        /// </summary>
         protected async Task Save<TComponent, TOptions>(TOptions options)
             where TComponent : StatefulComponent
             where TOptions : IStatefulComponentOptions

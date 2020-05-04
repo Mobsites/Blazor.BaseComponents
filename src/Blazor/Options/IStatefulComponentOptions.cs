@@ -8,6 +8,6 @@ namespace Mobsites.Blazor
     /// </summary>
     public interface IStatefulComponentOptions
     {
-        
+
     }
 }

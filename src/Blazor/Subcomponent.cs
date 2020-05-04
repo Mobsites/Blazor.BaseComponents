@@ -29,12 +29,15 @@ namespace Mobsites.Blazor
         /// </summary>
         protected new EventCallback<BackgroundModes> BackgroundModeChanged { get; set; }
 
+        /// <summary>
+        /// Life cycle method for when parameters from parent are set.
+        /// </summary>
         protected override void OnParametersSet()
         {
             if (Parent is null)
             {
                 throw new ArgumentNullException(
-                    nameof(Parent), 
+                    nameof(Parent),
                     $"This component must be nested in a parent component of type {typeof(T).Name}!");
             }
         }

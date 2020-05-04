@@ -15,6 +15,9 @@ namespace Mobsites.Blazor
         private readonly IJSRuntime jsRuntime;
         private readonly JsonSerializerOptions options;
 
+        /// <summary>
+        /// Constructor for passing in <see cref="IJSRuntime" /> to initialize storage access.
+        /// </summary>
         public SessionStorage(IJSRuntime jsRuntime)
         {
             this.jsRuntime = jsRuntime;

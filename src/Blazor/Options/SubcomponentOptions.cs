@@ -6,7 +6,7 @@ namespace Mobsites.Blazor
     /// <summary>
     /// Abstract base representing options that can be saved in browser storage.
     /// </summary>
-    public abstract class SubComponentOptions : BaseComponentOptions
+    public abstract class SubcomponentOptions : BaseComponentOptions
     {
         /************************************************************************
         *
@@ -27,6 +27,6 @@ namespace Mobsites.Blazor
         *
         ***********************************************************************/
 
-       
+
     }
 }

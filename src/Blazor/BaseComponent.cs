@@ -36,16 +36,17 @@ namespace Mobsites.Blazor
         /// <summary>
         /// Styles for directly affecting this component go here.
         /// </summary>
-        [Parameter] public virtual string Style
-        { 
-            get 
+        [Parameter]
+        public virtual string Style
+        {
+            get
             {
                 string color = string.IsNullOrWhiteSpace(this.Color) ? null : $"color: {this.Color};";
                 string background = string.IsNullOrWhiteSpace(this.BackgroundColor) ? null : $"background-color: {this.BackgroundColor};";
 
                 return background + color + style;
             }
-            set => style = value; 
+            set => style = value;
         }
 
         /// <summary>
@@ -68,11 +69,12 @@ namespace Mobsites.Blazor
         /// <summary>
         /// Switch for dark and light modes.
         /// </summary>
-        [Parameter] public virtual ContrastModes ContrastMode
+        [Parameter]
+        public virtual ContrastModes ContrastMode
         {
             get => (this.Parent?.ContrastMode ?? ContrastModes.Normal) == ContrastModes.Normal ? contrastMode : this.Parent.ContrastMode;
             set => contrastMode = value;
-        } 
+        }
 
         /// <summary>
         /// Call back event for notifying another component that this property changed. 
@@ -94,8 +96,9 @@ namespace Mobsites.Blazor
         /// <summary>
         /// The foreground color for this component. Accepts any valid css color usage.
         /// </summary>
-        [Parameter] public virtual string Color 
-        { 
+        [Parameter]
+        public virtual string Color
+        {
             get => this.Parent is null
                 ? this.ContrastMode switch
                 {
@@ -138,8 +141,9 @@ namespace Mobsites.Blazor
         /// <summary>
         /// The background color for this component. Accepts any valid css color usage.
         /// </summary>
-        [Parameter] public virtual string BackgroundColor 
-        { 
+        [Parameter]
+        public virtual string BackgroundColor
+        {
             get => this.Parent is null
                 ? this.ContrastMode switch
                 {
@@ -161,17 +165,11 @@ namespace Mobsites.Blazor
                 };
             set => backgroundColor = string.IsNullOrWhiteSpace(value) ? null : value;
         }
-        
+
         /// <summary>
         /// Call back event for notifying another component that this property changed. 
         /// </summary>
         [Parameter] public virtual EventCallback<string> BackgroundColorChanged { get; set; }
-        
-        /// <summary>
-        /// The background color for this component's dark mode. Default is #121212.
-        /// Accepts any valid css color usage.
-        /// </summary>
-        [Parameter] public virtual string DarkModeBackgroundColor { get; set; } = "#121212";
 
         /// <summary>
         /// The foreground color for this component's dark mode. Default is #f2f2f2.
@@ -180,16 +178,22 @@ namespace Mobsites.Blazor
         [Parameter] public virtual string DarkModeColor { get; set; } = "#f2f2f2";
 
         /// <summary>
-        /// The background color for this component's light mode. Default is #f2f2f2.
+        /// The background color for this component's dark mode. Default is #121212.
         /// Accepts any valid css color usage.
         /// </summary>
-        [Parameter] public virtual string LightModeBackgroundColor { get; set; } = "#f2f2f2";
+        [Parameter] public virtual string DarkModeBackgroundColor { get; set; } = "#121212";
 
         /// <summary>
         /// The foreground color for this component's light mode. Default is #121212.
         /// Accepts any valid css color usage.
         /// </summary>
         [Parameter] public virtual string LightModeColor { get; set; } = "#121212";
+
+        /// <summary>
+        /// The background color for this component's light mode. Default is #f2f2f2.
+        /// Accepts any valid css color usage.
+        /// </summary>
+        [Parameter] public virtual string LightModeBackgroundColor { get; set; } = "#f2f2f2";
 
 
 
@@ -209,6 +213,9 @@ namespace Mobsites.Blazor
         /// </summary>
         [Inject] protected IJSRuntime jsRuntime { get; set; }
 
+        /// <summary>
+        /// Set values on options that need to be maintained when keeping state.
+        /// </summary>
         protected void SetOptions(BaseComponentOptions options)
         {
             options.BackgroundMode = this.BackgroundMode;
@@ -219,6 +226,10 @@ namespace Mobsites.Blazor
             options.BackgroundColor = this.BackgroundColor;
         }
 
+        /// <summary>
+        /// Check whether storage-retrieved options are different than current
+        /// and thereby need to notify parents of change when keeping state.
+        /// </summary>
         protected async Task<bool> CheckState(BaseComponentOptions options)
         {
             bool stateChanged = false;
@@ -261,8 +272,11 @@ namespace Mobsites.Blazor
             }
 
             return stateChanged;
-        }   
+        }
 
+        /// <summary>
+        /// Called by GC.
+        /// </summary>
         public virtual void Dispose()
         {
             initialized = false;
