@@ -19,7 +19,7 @@ Abstract components that provide a common member base to our various Blazor comp
 
 ## Design and Development
 
-The design and development of this shared Blazor component library was heavily guided by Microsoft's [Steve Sanderson](https://blog.stevensanderson.com/). He outlines a superb approach to building and deploying a reusable component library in this [presentation](https://youtu.be/QnBYmTpugz0) and [example](https://github.com/SteveSandersonMS/presentation-2020-01-NdcBlazorComponentLibraries).
+The design and development of this shared Blazor component library was influenced by Microsoft's [Steve Sanderson](https://blog.stevensanderson.com/). He outlines a superb approach to building and deploying a reusable component library in this [presentation](https://youtu.be/QnBYmTpugz0) and [example](https://github.com/SteveSandersonMS/presentation-2020-01-NdcBlazorComponentLibraries).
 
 This library allows common members (properties and event callbacks) and functionality (keeping state) to be shared across all of our current Blazor components and any future ones as well.
 
