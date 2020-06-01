@@ -1,8 +1,8 @@
-[![Build Status](https://dev.azure.com/Mobsites-US/Blazor%20Base%20Components/_apis/build/status/Build?branchName=master)](https://dev.azure.com/Mobsites-US/Blazor%20Base%20Components/_build/latest?definitionId=16&branchName=master)
-
 # Blazor Base Components
 
 by <a href="https://www.mobsites.com"><img align="center" src="./src/assets/mobsites-logo.png" width="36" height="36" style="padding-top: 20px;" />obsites</a>
+
+![Nuget](https://img.shields.io/nuget/v/Mobsites.Blazor.BaseComponents) ![Nuget](https://img.shields.io/nuget/dt/Mobsites.Blazor.BaseComponents) [![Build Status](https://dev.azure.com/Mobsites-US/Blazor%20Base%20Components/_apis/build/status/Build?branchName=master)](https://dev.azure.com/Mobsites-US/Blazor%20Base%20Components/_build/latest?definitionId=16&branchName=master)
 
 Abstract components that provide a common member base to our various Blazor component types.
 
@@ -14,8 +14,8 @@ Abstract components that provide a common member base to our various Blazor comp
 
 ###### .NETStandard 2.0
 
-* Microsoft.AspNetCore.Components (>= 3.1.3)
-* Microsoft.AspNetCore.Components.Web (>= 3.1.3)
+* Microsoft.AspNetCore.Components (>= 3.1.4)
+* Microsoft.AspNetCore.Components.Web (>= 3.1.4)
 
 ## Design and Development
 
