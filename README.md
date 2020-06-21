@@ -14,8 +14,8 @@ Abstract components that provide a common member base to our various Blazor comp
 
 ###### .NETStandard 2.0
 
-* Microsoft.AspNetCore.Components (>= 3.1.4)
-* Microsoft.AspNetCore.Components.Web (>= 3.1.4)
+* Microsoft.AspNetCore.Components (>= 3.1.5)
+* Microsoft.AspNetCore.Components.Web (>= 3.1.5)
 
 ## Design and Development
 
